@@ -1,0 +1,42 @@
+<aura:component controller="WhatsappMessagingService" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="msgs" type="list"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+<lightning:card>
+    <div class="slds-grid slds-gutters">
+  <div class="slds-col slds-size_1-of-3">
+       <div class="row">
+        <lightning:input aura:id="mobileNumber1" name="mobileNumber" label="Mobile Number" />
+        <lightning:input aura:id="message1" name="message" label="Message" />
+    </div>
+    <div class="slds-p-around_medium">
+        <lightning:button variant="brand" label="Send Whatsapp Message" title="Send Message" onclick="{!c.handleWhatsapp }" />
+    </div>    
+    </div>
+        <div class="slds-col slds-size_1-of-3">
+    <div class="row">
+        <lightning:input aura:id="mobileNumber" name="mobileNumber" label="Mobile Number" />
+        <lightning:input aura:id="message" name="message" label="Message" />
+        <lightning:input aura:id="date" required="true" name="date" type="date" label="Enter Scheduled Date"/>
+    </div>
+    <div class="slds-p-around_medium">
+        <lightning:button variant="brand" label="Send Scheduled SMS" title="Schedule Message" onclick="{!c.handleClick}" />
+    </div>
+            </div>
+      <div class="slds-col slds-size_1-of-3">
+    <div class="row">
+        <lightning:input aura:id="mobileNumber2" name="mobileNumber" label="Mobile Number" />
+    </div>
+    <div class="slds-p-around_medium">
+        <lightning:button variant="brand" label="Fetch Last 20 Messages to this Number" title="Fetch Last 20 Messages to this Number" onclick="{!c.handlefetch}" />
+    </div>
+         <div class="slds-hide" aura:id="condnShow">
+              <aura:iteration items="{!v.msgs}" var="item">
+                  <div>{!item}</div>
+              </aura:iteration>
+          </div>
+    </div>
+    </div>
+    
+        
+    </lightning:card>
+</aura:component>
